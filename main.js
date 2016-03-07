@@ -95,7 +95,7 @@ if (Fs.existsSync(configPath)) {
 }
 //没找到配置文件，抛出错误信息
 if (config === null) {
-	Util.error('File not found: spm-config.js');
+	Util.error('File not found: ' + configPath);
 	process.exit();
 }
 

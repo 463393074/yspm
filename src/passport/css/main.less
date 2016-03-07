@@ -1,0 +1,82 @@
+@import "/src/g/css/var.less";
+
+.g-topbar{
+	.reg,
+	.login{ font-size:16px; margin-right:12px;}
+}
+
+.g-wrap{ height:100%; position:relative; background:#fff;}
+.form-t1{ padding:32px; position:relative;
+	.row{ border-bottom:1px solid @border; padding:6px 0; line-height:30px;}
+	input[type=email],
+	input[type=password],
+	input[type=text]{ border:none; height:30px; line-height:30px; width:100%; padding:0 6px; font-size:16px; background:none; box-sizing:border-box;}
+	.input-radio,
+	.input-check{ margin-right:6px; vertical-align:middle;}
+	.action{ padding:12px 0;}
+	.submit{ width:100%; height:32px; border-radius:4px; font-size:18px;}
+}
+
+/* 登录 */
+.login-form{
+	.auto-login{ padding:12px 0; color:@font-t1;}
+	.forget{ text-align:right;
+		a{ color:@main;}
+	}
+}
+/* 第三方登录 */
+.other-login{ position:absolute; left:0; bottom:0; width:100%; padding-bottom:16px;
+	h2{ margin:0 32px; font-size:16px; color:@font-t1; text-align:center; border-bottom:1px solid @border;
+		span{ background:#fff; padding:0 20px; position:relative; top:12px;}
+	}
+	.acounts{ text-align:center; margin-top:24px;
+		li{ display:inline-block; margin:0 20px;}
+		a{ display:block; text-align:center; line-height:60px; width:60px; height:60px; border-radius:50%; position:relative;}
+		i{ width:40px; height:40px; position:absolute; background-size:cover; background-position:0 0; background-repeat:no-repeat; left:50%; top:50%; margin-left:-20px; margin-top:-20px;}
+		span{ display:block; margin-top:6px;}
+		.weibo a{ background:#ffd33b;}
+		.weibo i{ background-image:url("@{base}/g/img/weibo.png");}
+		.qq a{ background:#eeeeee;}
+		.qq i{ background-image:url("@{base}/g/img/qq.png");}
+	}
+}
+
+/* 注册 */
+.reg-form{ padding-top:96px;
+	.avatar{ width:80px; height:80px; background:@bg; border-radius:50%; position:absolute; left:50%; margin-left:-40px; top:10px;
+		i{ width:38px; height:38px; background:url("@{base}/g/img/avatar.png") 0 0 no-repeat; background-size:cover; position:absolute; left:50%; margin-left:-19px; top:50%; margin-top:-19px;}
+	}
+	.sex{ width:60px; color:@font-t1; font-size:16px;
+		i{ margin:0;}
+		.sep{ padding:0 6px; color:#cdcdcd; text-align:right;}
+		.current{ color:#00c0ff;}
+	}
+	.sex{ color:@font-t1;
+		label{ margin-right:16px;}
+	}
+	.code{
+		.col-2{ width:130px; text-align:right;}
+		.code-img{ width:120px; height:30px; vertical-align:top; position:relative; top:5px;}
+	}
+	
+	.rule{ font-size:14px; padding-top:2px; text-align:center; color:@font-t1;
+		a{ color:@main;}
+	}
+}
+
+/* 申请充值密码*/
+.apply-reset-form{
+	.code{
+		.col-2{ width:130px; text-align:right;}
+		.code-img{ width:120px; height:30px; vertical-align:top; position:relative; top:5px;}
+	}
+}
+
+
+.reset-pwd-success{
+	.success-box{ padding:32px 0; text-align:center; color:@font-t1; font-size:14px;}
+	.num{ color:@main;}
+	a{ color:@link;}
+}
+
+

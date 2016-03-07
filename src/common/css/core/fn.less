@@ -1,0 +1,64 @@
+.input-text{ border-radius:2px; height:32px; padding:4px 8px; line-height: 32px; border:1px solid #ccc; box-sizing:border-box;}
+
+.fl { float:left;}
+.fr { float:right;}
+.fix:after {content:"\20";display:block;height:0;clear:both;visibility:hidden;}
+
+.row-flow{ display: -webkit-flex; display:flex;  -webkit-flex-flow: row; flex-flow:row;}
+.row-flow .col{ display:block;}
+.row-flow .col-f1{ -webkit-flex:1; flex:1;}
+.col-flow{ display:flex; -webkit-flex-flow: column; flex-flow:column;}
+.col-flow .row{ display:block;}
+.col-flow .row-f1{ -webkit-flex:1; flex:1;}
+
+.circle{ border-radius:50%;}
+
+.border-box{ box-sizing:border-box;}
+
+/* 单行文字溢出时出现省略号，需设定宽度 */ 
+.text-overflow {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* 在恰当的断字点进行换行： */
+.break-word { 
+    word-wrap:break-word;
+}
+.break-all {
+    word-wrap:break-word;
+    word-break:break-all;
+}
+
+/* 两端对齐 */ 
+.text-justify {
+    text-align:justify;
+    text-justify:inter-ideograph; 
+}
+
+
+.btn, .btn:link{ display:inline-block; border:none; white-space:nowrap; font-weight:normal; vertical-align:middle; background: @main;  color:#fff; box-sizing:border-box; text-decoration:none;}
+
+.btn-default{
+	background:#fff;
+	border-color:#ccc;
+	color:#808080;
+}
+.btn-danger{
+	background:#d9534f;
+	border-color:#d43f3a;
+}
+.btn-warning{
+	background:#d9534f;
+	border-color:#eea236;
+}
+.btn-success{
+	background:#5cb85c;
+	border-color:#4cae4c;
+}
+.btn-info{
+	background:#337ab7;
+	border-color:#2e6da4;
+}
+

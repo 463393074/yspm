@@ -1,0 +1,38 @@
+{
+  "name": "yspm",
+  "version": "1.0.8",
+  "description": "Static Package Manager",
+  "author": {
+    "name": "463393074",
+    "email": "463393074@qq.com"
+  },
+  "bin": {
+    "yspm": "./yspm"
+  },
+  "keywords": [
+    "frontend",
+    "static",
+    "package",
+    "builder"
+  ],
+  "dependencies": {
+    "babel-core": "^6.5.2",
+    "babel-loader": "^6.2.4",
+    "crypto": "0.0.3",
+    "gulp": "^3.9.1",
+    "gulp-concat": "^2.6.0",
+    "gulp-imagemin": "^2.4.0",
+    "gulp-less": "^3.0.5",
+    "gulp-minify-css": "^1.2.4",
+    "gulp-uglify": "^1.5.3",
+    "gulp-util": "^3.0.7",
+    "gulp-webpack": "^1.5.0",
+    "html-loader": "^0.4.3",
+    "iconv-lite": "^0.4.13",
+    "node.extend": "^1.1.5",
+    "optimist": "^0.6.1",
+    "through2": "^2.0.1",
+    "underscore": "^1.8.3",
+    "webpack": "^1.12.14"
+  }
+}

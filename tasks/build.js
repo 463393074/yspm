@@ -126,10 +126,10 @@ var Klass = Task.extend({
 					loader: 'style-loader!css-loader'
 				}, {
 					test: /\.js$/,
-					loader: "babel"
+					loader: require.resolve('babel-loader')
 				}, {
 					test: /\.tpl/,
-					loader: require.resolve("html-loader")
+					loader: require.resolve('html-loader')
 				}]
 			},
 			//其它解决方案配置

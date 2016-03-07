@@ -1,6 +1,6 @@
 {
   "name": "yspm",
-  "version": "1.0.9",
+  "version": "1.0.11",
   "description": "Static Package Manager",
   "author": {
     "name": "463393074",
@@ -16,7 +16,6 @@
     "builder"
   ],
   "dependencies": {
-    "babel": "^6.5.2",
     "babel-core": "^6.5.2",
     "babel-loader": "^6.2.4",
     "crypto": "0.0.3",

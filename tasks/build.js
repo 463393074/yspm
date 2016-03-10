@@ -51,12 +51,11 @@ var Klass = Task.extend({
 		var pathList = [];
 		var args = self.args;
 		var config = self.config;
-		if (args.length < 1) { //构建所有配置里的文件			
-			config.main.js.forEach(function(path) {
-				pathList.push(Path.resolve(config.root + '/' + config.srcPath + '/' + path));
-			});
-			config.main.css.forEach(function(path) {
-				pathList.push(Path.resolve(config.root + '/' + config.srcPath + '/' + path));
+		if (args.length < 1) { //构建所有配置里的文件	
+			config.fileCombos.forEach(function(combo){
+				combo.all.forEach(function(path){
+					pathList.push(Path.resolve(config.root + '/' + config.srcPath + '/' + path));
+				});
 			});
 		} else { //构建指定路径文件
 			var path = Path.resolve(config.srcPath + '/' + args[0]);
@@ -84,19 +83,18 @@ var Klass = Task.extend({
 		var self = this;
 		var config = self.config;
 		var srcPath = '/' + config.srcPath;
-		//console.log('path:' + path);
 		if (!Util.indir(path, Path.resolve(config.root + srcPath))) {
 			return false;
 		}
 		
-		if (/\.js$/.test(path)) {
+		if (/\.js$/.test(path) || /\.less$/.test(path)) {
 			var relativePath = self.getRelativePath(path, srcPath);
-			return config.main.js.indexOf(relativePath) >= 0;
-		}
-		
-		if (/\.less$/.test(path)) {
-			var relativePath = self.getRelativePath(path, srcPath);
-			return config.main.css.indexOf(relativePath) >= 0;
+			for (var i = 0; i < config.fileCombos.length; i++) {
+				if (config.fileCombos[i].all.indexOf(relativePath) >= 0) {
+					return true
+				}
+			}
+			return false;
 		}
 		
 		if (/\.(tpl|vm|sh|bat|cmd)$/.test(path)) {
@@ -108,6 +106,7 @@ var Klass = Task.extend({
 	_getWebpackConfig: function(path){
 		var self = this;
 		var _path = Path.relative(self.config.root + '/' + self.config.srcPath, path).split(Path.sep).join('/');
+		var combo = self.getCombo(_path);
 		var webpackConfig = {
 			//context: self.config.root + "/src",
 			entry: {
@@ -139,12 +138,40 @@ var Klass = Task.extend({
 				root: [Path.resolve(self.config.root + '/' + self.config.srcPath)],
 				extensions: ['', '.js', '.css', '.less', '.tpl'] //后缀补全
 			},
-			plugins: []
+			//devtool: 'source-map',
+			plugins: [
+				
+//				new Webpack.SourceMapDevToolPlugin({
+//					filename: 'login.js.map'
+//				})
+			]
 		}
 		
-		if (self.config.global.indexOf(_path) == -1) {
-			//全局模块不构建
-			self.config.ignore.forEach(function(path){
+		//第一个全局文件
+		if (combo.globalJs.indexOf(_path) == 0) {
+			webpackConfig.entry.main = [path];
+			webpackConfig.entry.common.push(path);
+			webpackConfig.plugins.push(new Webpack.optimize.CommonsChunkPlugin({
+				name: 'main',
+				filename: Path.basename(path)
+			}))
+		}
+		//其他全局文件
+		else if (combo.globalJs.indexOf(_path) > 0) {
+			combo.ignoreJs.forEach(function(__path){
+				var fullPath = self.getSrcPath(__path);
+				if (Fs.existsSync(fullPath) && __path != _path) {
+					webpackConfig.entry.common.push(fullPath);
+				}
+			});
+			webpackConfig.entry.main = [path];
+			webpackConfig.plugins.push(new Webpack.optimize.CommonsChunkPlugin({
+				name: 'common'
+			}))
+		}
+		//普通文件
+		else {
+			combo.ignoreJs.forEach(function(path){
 				var fullPath = self.getSrcPath(path);
 				if (Fs.existsSync(fullPath)) {
 					webpackConfig.entry.common.push(fullPath);
@@ -155,15 +182,7 @@ var Klass = Task.extend({
 				//filename:'common.js',
 				name: 'common'
 			}))
-		}
-		else {
-			webpackConfig.entry.main = [];
-			webpackConfig.entry.main.push(path);
-			webpackConfig.entry.common.push(path);
-			webpackConfig.plugins.push(new Webpack.optimize.CommonsChunkPlugin({
-				name: 'main',
-				filename: Path.basename(path)
-			}))
+			
 		}
 		return webpackConfig;
 	},
@@ -173,15 +192,16 @@ var Klass = Task.extend({
 		var relativePath = self.getRelativePath(path, '/' + config.srcPath + '/');
 		var buildPath = self.getBuildPath(path);
 		var distPath = self.getDistPath(path, config.srcPath);
+		var combo = self.getCombo(relativePath);
 		
 		// 把多个文件合并成一个文件
-		var libjsList = config.libjs[relativePath];
+		var concatJsList = combo.concatJs[relativePath];
 		var fileStream;
-		if (libjsList) {
-			libjsList = libjsList.map(function(_path){
+		if (concatJsList) {
+			concatJsList = concatJsList.map(function(_path){
 				return self.getSrcPath(_path);
 			});
-			fileStream = Gulp.src(libjsList)
+			fileStream = Gulp.src(concatJsList)
 				.pipe(GulpConcat(Path.basename(path)))
 				.pipe(Gulp.dest(Path.dirname(path)));
 		}

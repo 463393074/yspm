@@ -21,6 +21,16 @@ module.exports = Class({
 		var self = this;
 		self.pathList = [];
 	},
+	getCombo: function(pach){
+		var self = this;
+		var fileCombos = self.config.fileCombos;
+		for (var i = 0; i < fileCombos.length; i++) {
+			var combo = fileCombos[i];
+			if (combo.all.indexOf(pach) >= 0) {
+				return combo;
+			}
+		}
+	},
 	//转换成相对路径
 	getRelativePath: function(path, type){
 		var self = this;

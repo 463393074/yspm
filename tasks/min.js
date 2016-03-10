@@ -27,7 +27,7 @@ var Klass = Task.extend({
 			if (/\.js$/i.test(path)) {
 				self.minJs(path);
 			}
-			else if (/\.less$/i.test(path)) {
+			else if (/\.css$/i.test(path)) {
 				self.minLess(path);
 			}
 			else if (/\.(png|jpg|jpeg|gif)$/i.test(path)) {
@@ -56,7 +56,7 @@ var Klass = Task.extend({
 				pathList = Util.grepPaths(path, self._canBuild.bind(self));
 			}
 			else {
-				if (!self.canBuild(path)) {
+				if (!self._canBuild(path)) {
 					Util.error('Can\'t build: ' + path);
 				}
 				else {
@@ -83,6 +83,7 @@ var Klass = Task.extend({
 	},
 	minLess: function(path){
 		var self = this;
+		console.log('path:'+path);
 		Gulp.src(path)
 			.pipe(GulpMinifyCss())
 			.pipe(Gulp.dest(Path.dirname(self.getDistPath(path))));

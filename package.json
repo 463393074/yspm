@@ -1,6 +1,6 @@
 {
   "name": "yspm",
-  "version": "1.0.16",
+  "version": "1.0.28",
   "description": "Static Package Manager",
   "author": {
     "name": "463393074",
@@ -21,6 +21,7 @@
     "crypto": "0.0.3",
     "gulp": "^3.9.1",
     "gulp-concat": "^2.6.0",
+    "gulp-ignore": "^2.0.1",
     "gulp-imagemin": "^2.4.0",
     "gulp-less": "^3.0.5",
     "gulp-minify-css": "^1.2.4",
@@ -29,9 +30,9 @@
     "gulp-webpack": "^1.5.0",
     "html-loader": "^0.4.3",
     "iconv-lite": "^0.4.13",
+    "loader-utils": "^0.2.12",
     "node.extend": "^1.1.5",
     "optimist": "^0.6.1",
-    "source-map-loader": "^0.1.5",
     "through2": "^2.0.1",
     "underscore": "^1.8.3",
     "webpack": "^1.12.14"

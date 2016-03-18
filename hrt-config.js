@@ -3,12 +3,12 @@ var localRoot = __dirname;
 exports.serverRoot = localRoot + '';
 exports.map = [
 
-	['http://staticwt.99wanban.com/src', localRoot + '/build'],
-	['http://staticwt.99wanban.com/build', localRoot + '/build'],
-	['http://staticwt.99wanban.com/dist', localRoot + '/build'],
-	['http://static.99wanban.com/src', localRoot + '/build'],
-	['http://static.99wanban.com/build', localRoot + '/build'],
-	['http://static.99wanban.com/dist', localRoot + '/build']
+	['http://staticwt.99wanban.com/src', localRoot + '/src'],
+	['http://staticwt.99wanban.com/build', localRoot + '/src'],
+	['http://staticwt.99wanban.com/dist', localRoot + '/src'],
+	['http://static.99wanban.com/src', localRoot + '/src'],
+	['http://static.99wanban.com/build', localRoot + '/src'],
+	['http://static.99wanban.com/dist', localRoot + '/src']
 
 ];
 

@@ -1,3 +1,4 @@
+
 var Cookie = require('common/js/core/cookie');
 
 module.exports = {

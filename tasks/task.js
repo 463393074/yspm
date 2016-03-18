@@ -1,9 +1,9 @@
 var Path = require('path');
 var Os = require('os');
 var Fs = require('fs');
-var Class = require('./class');
+var Class = require('../lib/class');
 
-var Util = require(__dirname + '/../util');
+var Util = require('../lib/util');
 
 module.exports = Class({
 	initialize: function(args, config){

@@ -1,27 +1,22 @@
 var Path = require('path');
 var Fs = require('fs');
 var Optimist = require('optimist'); //命令行解析库
-var Util = require(__dirname + '/util');
+var Util = require(__dirname + '/lib/util');
 
 //任务支持
 var TASK_MAP = {
-//	list : true,
-//	cleanup : true,
-//	check : true,
-//	vm : true,
-//	iconfont : true,
-	build : true,
-	min : true,
+	build : true, //构建
+	min : true, //压缩
+	watch: true //监听修改，实时构建
 };
 
 //帮助信息
 Optimist.usage([
-	'Usage: ytpm [COMMAND] --config=[CONFIG_FILE]\n\n',
+	'Usage: yspm [COMMAND] --config=[CONFIG_FILE]\n\n',
 	'Examples:\n',
-	'ytpm src/js/g.js\n',
-	'ytpm src/css/g.less\n',
-	'ytpm min build/js/g.js\n',
-	'ytpm cleanup\n',
+	'ytpm g/js/g.js\n',
+	'ytpm g/css/g.less\n',
+	'ytpm min g/js/g.js\n'
 ].join(''));
 
 var ARGV = Optimist.argv;
@@ -43,7 +38,7 @@ var cmd; //命令
 var args; //命令参数
 var dirPath; //要处理的路径
 var config = null; //配置文件
-var CONFIG_FILE_NAME = 'spm-config.js'; //配置文件名
+var CONFIG_FILE_NAME = 'spm-config.js'; //默认配置文件名
 var configPath = './' + CONFIG_FILE_NAME; //配置文件路径
 
 //拆分参数

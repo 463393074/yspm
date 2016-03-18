@@ -6,15 +6,16 @@ var Gulp = require('gulp');
 var GulpLess = require('gulp-less');
 var GulpWebpack = require('gulp-webpack');
 var GulpConcat = require('gulp-concat');
+var GulpIgnore = require('gulp-ignore');
 var Webpack = require('webpack');
 var Extend = require('node.extend');
 var GulpImageMin = require('gulp-imagemin');
 var GulpUglify = require('gulp-uglify');
 var GulpMinifyCss = require('gulp-minify-css');
-var GulpCssUrlVersion = require('./gulp-css-url-version');
+var GulpCssUrlVersion = require('../lib/gulp-css-url-version');
 //var WebpackAsyncLoadPlugin = require('./webpack-async');
-//var AsyncModulePlugin = require('async-module-loader/plugin');
-var Util = require(__dirname + '/../util');
+//var AsyncModulePlugin = require('./webpack-async');
+var Util = require('../lib/util');
 
 
 
@@ -125,7 +126,10 @@ var Klass = Task.extend({
 					loader: 'style-loader!css-loader'
 				}, {
 					test: /\.js$/,
-					loader: require.resolve('babel-loader')
+					loader: require.resolve('babel-loader') //ES6-ES5
+				}, {
+					test: /\.js$/,
+					loader: require.resolve('../lib/label-module-loader') //添加JS模块地址注释
 				}, {
 					test: /\.tpl/,
 					loader: require.resolve('html-loader')
@@ -138,9 +142,10 @@ var Klass = Task.extend({
 				root: [Path.resolve(self.config.root + '/' + self.config.srcPath)],
 				extensions: ['', '.js', '.css', '.less', '.tpl'] //后缀补全
 			},
-			//devtool: 'source-map',
+			devtool: 'source-map',
 			plugins: [
-				
+//				new Webpack.dependencies.LabeledModulesPlugin()
+//				new AsyncModulePlugin()
 //				new Webpack.SourceMapDevToolPlugin({
 //					filename: 'login.js.map'
 //				})
@@ -210,6 +215,7 @@ var Klass = Task.extend({
 				.pipe(GulpWebpack(self._getWebpackConfig(path)));
 		}
 		fileStream.pipe(Gulp.dest(Path.dirname(buildPath)))
+			.pipe(GulpIgnore.exclude([ "**/*.map" ]))
 			.pipe(GulpUglify())
 			.pipe(Gulp.dest(Path.dirname(distPath)));
 	},

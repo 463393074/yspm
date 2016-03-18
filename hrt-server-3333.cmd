@@ -1,0 +1,1 @@
+hrt "%~dp0\hrt-config.js" --port=3333 & pushd

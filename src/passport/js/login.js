@@ -6,3 +6,5 @@ var Model = require('g/js/model/passport');
 
 
 console.log('login.js');
+Cookie('xxx','111')
+console.log(Cookie('xxx'));

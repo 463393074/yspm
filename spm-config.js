@@ -14,6 +14,7 @@ exports.fileCombos = [{
 		"g/js/lib.js", 
 		"g/js/g.js", 
 		"g/js/g2.js", 
+		"passport/js/reg.js", 
 		"passport/js/login.js", 
 		"g/css/g.less", 
 		"passport/css/main.less"

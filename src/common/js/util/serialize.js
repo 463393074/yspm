@@ -15,5 +15,8 @@ module.exports = {
 			}
 		});
 		return o;
+	},
+	test: function(){
+		console.log('serialize module ...');
 	}
 }

@@ -38,5 +38,8 @@
 		return $.post('/passport/register.do', function(res){
 			cb && cb(res);
 		}, 'json')
+	},
+	test: function(){
+		console.log('passport model ...');
 	}
 }

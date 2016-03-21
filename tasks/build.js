@@ -184,7 +184,7 @@ var Klass = Task.extend({
 			});
 			webpackConfig.entry.main = path;
 			webpackConfig.plugins.push(new Webpack.optimize.CommonsChunkPlugin({
-				//filename:'common.js',
+				filename:'common.js',
 				name: 'common'
 			}))
 			

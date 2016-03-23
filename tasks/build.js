@@ -13,10 +13,10 @@ var GulpImageMin = require('gulp-imagemin');
 var GulpUglify = require('gulp-uglify');
 var GulpMinifyCss = require('gulp-minify-css');
 var GulpCssUrlVersion = require('../lib/gulp-css-url-version');
-//var WebpackAsyncLoadPlugin = require('./webpack-async');
-//var AsyncModulePlugin = require('./webpack-async');
+var WebpacModuleId = require('../lib/webpack-module-id');
 var Util = require('../lib/util');
 
+//var WebpacPlugin = require('../lib/webpack-plugin');
 
 
 var Klass = Task.extend({
@@ -108,6 +108,7 @@ var Klass = Task.extend({
 		var self = this;
 		var _path = Path.relative(self.config.root + '/' + self.config.srcPath, path).split(Path.sep).join('/');
 		var combo = self.getCombo(_path);
+		var root = Path.resolve(self.config.root + '/' + self.config.srcPath);
 		var webpackConfig = {
 			//context: self.config.root + "/src",
 			entry: {
@@ -128,9 +129,6 @@ var Klass = Task.extend({
 					test: /\.js$/,
 					loader: require.resolve('babel-loader') //ES6-ES5
 				}, {
-					test: /\.js$/,
-					loader: require.resolve('../lib/label-module-loader') //添加JS模块地址注释
-				}, {
 					test: /\.tpl/,
 					loader: require.resolve('html-loader')
 				}]
@@ -139,16 +137,15 @@ var Klass = Task.extend({
 			resolve: {
 				//模块查找目录
 				//modulesDirectories: ['node_modules'],
-				root: [Path.resolve(self.config.root + '/' + self.config.srcPath)],
+				root: [root],
 				extensions: ['', '.js', '.css', '.less', '.tpl'] //后缀补全
 			},
 			devtool: 'source-map',
 			plugins: [
 //				new Webpack.dependencies.LabeledModulesPlugin()
-//				new AsyncModulePlugin()
-//				new Webpack.SourceMapDevToolPlugin({
-//					filename: 'login.js.map'
-//				})
+				new WebpacModuleId({
+					root: root
+				})
 			]
 		}
 		
@@ -184,7 +181,7 @@ var Klass = Task.extend({
 			});
 			webpackConfig.entry.main = path;
 			webpackConfig.plugins.push(new Webpack.optimize.CommonsChunkPlugin({
-				filename:'common.js',
+				//filename:'common.js',
 				name: 'common'
 			}))
 			

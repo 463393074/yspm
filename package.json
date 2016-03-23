@@ -1,7 +1,7 @@
 {
   "name": "yspm",
-  "version": "1.0.28",
-  "description": "Static Package Manager",
+  "version": "1.1.1",
+  "description": "添加webpack-module-id插件，以模块URI作为ID索引，同时去掉了对模块URI的注释",
   "author": {
     "name": "463393074",
     "email": "463393074@qq.com"

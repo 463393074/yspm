@@ -140,7 +140,7 @@ var Klass = Task.extend({
 				root: [root],
 				extensions: ['', '.js', '.css', '.less', '.tpl'] //后缀补全
 			},
-			devtool: 'source-map',
+			devtool: 'cheap-module-inline-source-map',
 			plugins: [
 //				new Webpack.dependencies.LabeledModulesPlugin()
 				new WebpacModuleId({

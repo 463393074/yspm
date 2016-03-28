@@ -10,12 +10,14 @@ exports.distPath = 'dist'; // 压缩文件目录
 // 文件组
 exports.fileCombos = [{
 	// 主文件，各页面入口文件
-	all: [
+	js: [
 		"g/js/lib.js", 
 		"g/js/g.js", 
 		"g/js/g2.js", 
 		"passport/js/reg.js", 
-		"passport/js/login.js", 
+		"passport/js/login.js"
+	],
+	css: [
 		"g/css/g.less", 
 		"passport/css/main.less"
 	],
@@ -34,9 +36,11 @@ exports.fileCombos = [{
 		"g/js/g2.js"
 	]
 }, {
-	all: [
+	js: [
 		"g/js/m.js", 
 		"m/passport/js/login.js"
+	],
+	css: [
 	],
 	concatJs: {
 		"g/js/lib.js": ["common/js/lib/jquery.js"]

@@ -11,22 +11,29 @@ module.exports = Class({
 		config = config || {};
 		self.args = args;
 		self.config = config;
+		self._setAllPathlist();
 		self._setPathList();
-		
 	},
 	run: function(){
 		//...
+	},
+	_setAllPathlist: function(){
+		var self = this;
+		self.allPathList = [];
+		self.config.fileCombos.forEach(function(combo){
+			self.allPathList = self.allPathList.concat(combo.js.concat(combo.css));
+		});
 	},
 	_setPathList: function(){
 		var self = this;
 		self.pathList = [];
 	},
-	getCombo: function(pach){
+	getCombo: function(path){
 		var self = this;
 		var fileCombos = self.config.fileCombos;
 		for (var i = 0; i < fileCombos.length; i++) {
 			var combo = fileCombos[i];
-			if (combo.all.indexOf(pach) >= 0) {
+			if (combo.js.indexOf(path) >= 0 || combo.css.indexOf(path) >= 0) {
 				return combo;
 			}
 		}

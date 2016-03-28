@@ -1,6 +1,6 @@
 {
   "name": "yspm",
-  "version": "1.1.2",
+  "version": "1.1.3",
   "description": "添加webpack-module-id插件，以模块URI作为ID索引，同时去掉了对模块URI的注释",
   "author": {
     "name": "463393074",

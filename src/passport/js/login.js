@@ -5,7 +5,6 @@ var A = require('./a');
 
 G.init()
 
-
-console.log('login.js');
+console.log('login2.js');
 Serialize.test();
 A();

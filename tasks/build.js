@@ -13,7 +13,7 @@ var GulpImageMin = require('gulp-imagemin');
 var GulpUglify = require('gulp-uglify');
 var GulpMinifyCss = require('gulp-minify-css');
 var GulpCssUrlVersion = require('../lib/gulp-css-url-version');
-var WebpacModuleId = require('../lib/webpack-module-id');
+var WebpackModuleId = require('../lib/webpack-module-id');
 var Util = require('../lib/util');
 
 //var WebpacPlugin = require('../lib/webpack-plugin');
@@ -53,10 +53,8 @@ var Klass = Task.extend({
 		var args = self.args;
 		var config = self.config;
 		if (args.length < 1) { //构建所有配置里的文件	
-			config.fileCombos.forEach(function(combo){
-				combo.all.forEach(function(path){
-					pathList.push(Path.resolve(config.root + '/' + config.srcPath + '/' + path));
-				});
+			self.allPathList.forEach(function(path){
+				pathList.push(Path.resolve(config.root + '/' + config.srcPath + '/' + path));
 			});
 		} else { //构建指定路径文件
 			var path = Path.resolve(config.srcPath + '/' + args[0]);
@@ -90,12 +88,7 @@ var Klass = Task.extend({
 		
 		if (/\.js$/.test(path) || /\.less$/.test(path)) {
 			var relativePath = self.getRelativePath(path, srcPath);
-			for (var i = 0; i < config.fileCombos.length; i++) {
-				if (config.fileCombos[i].all.indexOf(relativePath) >= 0) {
-					return true
-				}
-			}
-			return false;
+			return self.allPathList.indexOf(relativePath) >= 0;
 		}
 		
 		if (/\.(tpl|vm|sh|bat|cmd)$/.test(path)) {
@@ -143,7 +136,7 @@ var Klass = Task.extend({
 			devtool: 'cheap-module-inline-source-map',
 			plugins: [
 //				new Webpack.dependencies.LabeledModulesPlugin()
-				new WebpacModuleId({
+				new WebpackModuleId({
 					root: root
 				})
 			]

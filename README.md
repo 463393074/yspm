@@ -49,6 +49,12 @@ yspm demo/img
 yspm min g/js/g.js
 ```
 
+### 监听JS修改实时构建
+
+```bash
+yspm watch
+yspm watch demo/js/
+
 ### 指定配置
 用config参数指定配置，默认用当前目录下的`tpm-config.js`。
 

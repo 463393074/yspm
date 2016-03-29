@@ -1,3 +1,4 @@
+var Cookie = require('common/js/core/cookie');
 var Event = require('common/js/core/event');
 
 var G = $.extend(new Event, {

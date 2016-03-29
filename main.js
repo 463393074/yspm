@@ -2,6 +2,7 @@ var Path = require('path');
 var Fs = require('fs');
 var Optimist = require('optimist'); //命令行解析库
 var Util = require(__dirname + '/lib/util');
+var Extend = require('node.extend');
 
 //任务支持
 var TASK_MAP = {
@@ -35,7 +36,7 @@ if (ARGV.version || ARGV.v) {
 }
 
 var cmd; //命令
-var args; //命令参数
+var args; //命令参数，要处理的文件或者目录
 var dirPath; //要处理的路径
 var config = null; //配置文件
 var CONFIG_FILE_NAME = 'spm-config.js'; //默认配置文件名
@@ -96,7 +97,7 @@ if (config === null) {
 
 //运行任务
 var Task = require(__dirname + '/tasks/' + cmd);
-var oTask = new Task(args, config);
+var oTask = new Task(args, Extend(config, ARGV));
 oTask.run();
 
 

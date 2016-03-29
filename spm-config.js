@@ -7,6 +7,8 @@ exports.buildPath = 'build'; // 打包文件目录
 
 exports.distPath = 'dist'; // 压缩文件目录
 
+exports.watching = false; //监听修改
+
 // 文件组
 exports.fileCombos = [{
 	// 主文件，各页面入口文件
@@ -32,7 +34,7 @@ exports.fileCombos = [{
 	],
 	// 以下文件无视 ignore的设定
 	globalJs: [
-		"g/js/g.js", 
+		"g/js/g.js",  //yspm会把公共方法打包进globalJs的第一个文件
 		"g/js/g2.js"
 	]
 }, {

@@ -6,7 +6,6 @@ var Gulp = require('gulp');
 var GulpLess = require('gulp-less');
 var GulpWebpack = require('gulp-webpack');
 var GulpConcat = require('gulp-concat');
-var GulpIgnore = require('gulp-ignore');
 var Webpack = require('webpack');
 var Extend = require('node.extend');
 var GulpImageMin = require('gulp-imagemin');
@@ -103,14 +102,11 @@ var Klass = Task.extend({
 		var combo = self.getCombo(_path);
 		var root = Path.resolve(self.config.root + '/' + self.config.srcPath);
 		var webpackConfig = {
-			//context: self.config.root + "/src",
 			entry: {
 				main: '',
 				common: []
 			},
 			output: {
-				//publicPath: self.config.root + '/' + self.config.srcPath,
-				//chunkFilename: "[name].chunk.js",
 				filename: Path.basename(path),
 			},
 			module: {
@@ -120,7 +116,7 @@ var Klass = Task.extend({
 					loader: 'style-loader!css-loader'
 				}, {
 					test: /\.js$/,
-					loader: require.resolve('babel-loader') //ES6-ES5
+					loader: require.resolve('babel-loader')
 				}, {
 					test: /\.tpl/,
 					loader: require.resolve('html-loader')
@@ -133,16 +129,16 @@ var Klass = Task.extend({
 				root: [root],
 				extensions: ['', '.js', '.css', '.less', '.tpl'] //后缀补全
 			},
-			devtool: 'cheap-module-inline-source-map',
+			watch: self.config.watch, //是否监听文件修改
+			devtool: 'cheap-module-inline-source-map', //sourcemap调试
 			plugins: [
-//				new Webpack.dependencies.LabeledModulesPlugin()
-				new WebpackModuleId({
+				new WebpackModuleId({ //修改moduleId为module的地址
 					root: root
 				})
 			]
 		}
 		
-		//第一个全局文件
+		//第一个全局文件，一般是g.js，会把公共方法打包进去
 		if (combo.globalJs.indexOf(_path) == 0) {
 			webpackConfig.entry.main = [path];
 			webpackConfig.entry.common.push(path);
@@ -205,7 +201,6 @@ var Klass = Task.extend({
 				.pipe(GulpWebpack(self._getWebpackConfig(path)));
 		}
 		fileStream.pipe(Gulp.dest(Path.dirname(buildPath)))
-			.pipe(GulpIgnore.exclude([ "**/*.map" ]))
 			.pipe(GulpUglify())
 			.pipe(Gulp.dest(Path.dirname(distPath)));
 	},

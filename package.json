@@ -1,7 +1,7 @@
 {
   "name": "yspm",
-  "version": "1.1.7",
-  "description": "土豆前端打包构建工具",
+  "version": "1.1.10",
+  "description": "土豆前端构建工具",
   "author": "463393074 <463393074@qq.com>",
   "bin": {
     "yspm": "./yspm"

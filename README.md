@@ -24,7 +24,6 @@ dist/		# 压缩后代码=
 
 ### 构建JS
 
-```bash
 yspm demo/js/main.js
 yspm demo/js
 ```
@@ -54,17 +53,7 @@ yspm min g/js/g.js
 ```bash
 yspm watch
 yspm watch demo/js/
-
-### 指定配置
-用config参数指定配置，默认用当前目录下的`tpm-config.js`。
-
-```bash
-yspm demo/js/main.js --config=my-config.js
 ```
-
-### 整理build、dist目录
-
-删除build、dist里的多余的目录和文件。
 
 ### 配置说明
 

@@ -68,6 +68,6 @@ yspm demo/js/main.js --config=my-config.js
 
 ### 配置说明
 
-* all：JS和CSS入口文件。
+* js/css：JS和CSS入口文件。
 * concatJs：全局非AMD文件。
 * globalJs：全局入口文件。

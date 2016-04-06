@@ -1,11 +1,8 @@
 {
   "name": "yspm",
-  "version": "1.1.4",
+  "version": "1.1.5",
   "description": "添加watch功能",
-  "author": {
-    "name": "463393074",
-    "email": "463393074@qq.com"
-  },
+  "author": "463393074 <463393074@qq.com>",
   "bin": {
     "yspm": "./yspm"
   },
@@ -35,5 +32,18 @@
     "through2": "^2.0.1",
     "underscore": "^1.8.3",
     "webpack": "^1.12.14"
-  }
+  },
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/463393074/yspm.git"
+  },
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/463393074/yspm/issues"
+  },
+  "homepage": "https://github.com/463393074/yspm#readme"
 }

@@ -6,7 +6,7 @@ YSPM是前端打包工具。
 ## 安装
 
 ```
-tnpm install yspm
+tnpm install yspm -g
 npm install yspm -g
 npm install yspm -g --registry http://10.5.111.205:4873
 ```

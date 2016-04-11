@@ -17,13 +17,15 @@ yspm [COMMAND]
 
 ### 目录结构
 
-```
+```bash
 src/		# 源代码=
 build/		# 打包后代码，未压缩=
 dist/		# 压缩后代码=
+```
 
 ### 构建JS
 
+```bash
 yspm demo/js/main.js
 yspm demo/js
 ```

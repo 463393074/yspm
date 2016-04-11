@@ -101,13 +101,16 @@ var Klass = Task.extend({
 		var _path = Path.relative(self.config.root + '/' + self.config.srcPath, path).split(Path.sep).join('/');
 		var combo = self.getCombo(_path);
 		var root = Path.resolve(self.config.root + '/' + self.config.srcPath);
+		var filename = Path.basename(path);
 		var webpackConfig = {
 			entry: {
 				main: '',
 				common: []
 			},
 			output: {
-				filename: Path.basename(path),
+				filename: filename,
+				//publicPath: Path.dirname(_path) + '/',
+				//chunkFilename: filename.split('.')[0] + ".[id].js"
 			},
 			module: {
 				//加载器配置
@@ -133,7 +136,8 @@ var Klass = Task.extend({
 			devtool: 'cheap-module-inline-source-map', //sourcemap调试
 			plugins: [
 				new WebpackModuleId({ //修改moduleId为module的地址
-					root: root
+					root: root,
+					path: _path
 				})
 			]
 		}
@@ -142,6 +146,7 @@ var Klass = Task.extend({
 		if (combo.globalJs.indexOf(_path) == 0) {
 			webpackConfig.entry.main = [path];
 			webpackConfig.entry.common.push(path);
+			//webpackConfig.output.chunkFilename = ".[name]";
 			webpackConfig.plugins.push(new Webpack.optimize.CommonsChunkPlugin({
 				name: 'main',
 				filename: Path.basename(path)
@@ -169,6 +174,7 @@ var Klass = Task.extend({
 				}
 			});
 			webpackConfig.entry.main = path;
+			//webpackConfig.output.chunkFilename = filename.split('.')[0] + ".[name]";
 			webpackConfig.plugins.push(new Webpack.optimize.CommonsChunkPlugin({
 				//filename:'common.js',
 				name: 'common'

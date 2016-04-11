@@ -21,7 +21,8 @@ exports.fileCombos = [{
 	],
 	css: [
 		"g/css/g.less", 
-		"passport/css/main.less"
+		"passport/css/main.less",
+		"passport/css/main.css"
 	],
 	// 直接concat复制的文件
 	concatJs: {

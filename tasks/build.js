@@ -35,7 +35,7 @@ var Klass = Task.extend({
 			if (/\.js$/i.test(path)) {
 				self.buildJs(path);
 			}
-			else if (/\.less$/i.test(path)) {
+			else if (/\.(less|css)$/i.test(path)) {
 				self.buildLess(path);
 			}
 			else if (/\.(png|jpg|jpeg|gif)$/i.test(path)) {

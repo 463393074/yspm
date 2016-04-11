@@ -1,0 +1,16 @@
+@import "/src/g/css/var.less";
+
+@import "/src/common/css/core/fn.less";
+
+
+.g-wrap{ height:100%; position:relative; background:#fff;}
+.form-t1{ padding:32px; position:relative;
+	.row{ border-bottom:1px solid @border; padding:6px 0; line-height:30px;}
+	input[type=email],
+	input[type=password],
+	input[type=text]{ border:none; height:30px; line-height:30px; width:100%; padding:0 6px; font-size:16px; background:none; box-sizing:border-box;}
+	.input-radio,
+	.input-check{ margin-right:6px; vertical-align:middle;}
+	.action{ padding:12px 0;}
+	.submit{ width:100%; height:32px; border-radius:4px; font-size:18px;}
+}

@@ -6,9 +6,13 @@ var A = require('./a');
 G.init()
 
 console.log('login.js');
-Serialize.test();
-A();
 
+A();
+Serialize.test();
+
+
+
+/*
 __webpack_public_path__ = 'dist/passport/js/login';
 require(['./amd', './amd3'], function(amd, amd3){
 	amd();
@@ -19,3 +23,4 @@ require.ensure(['./amd2'], function(require){
 	var amd2 = require('./amd2');
 	amd2();
 })
+*/

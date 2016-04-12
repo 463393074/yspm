@@ -201,6 +201,19 @@ var Klass = Task.extend({
 			fileStream = Gulp.src(concatJsList)
 				.pipe(GulpConcat(Path.basename(path)))
 				.pipe(Gulp.dest(Path.dirname(path)));
+			
+			if (self.config.watch) {
+				Gulp.watch(concatJsList, function(o){
+					if (o.type == 'changed') {
+						Gulp.src(concatJsList)
+						.pipe(GulpConcat(Path.basename(path)))
+						.pipe(Gulp.dest(Path.dirname(path)))
+						.pipe(Gulp.dest(Path.dirname(buildPath)))
+						.pipe(GulpUglify())
+						.pipe(Gulp.dest(Path.dirname(distPath)));
+					}
+				});
+			}
 		}
 		else {
 			fileStream = Gulp.src(path)

@@ -1,3 +1,4 @@
+var amd2 = require('./amd2');
 module.exports = function(){
-	console.log('amd...');	
+	amd2();
 }

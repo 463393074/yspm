@@ -7,6 +7,15 @@
     </head>
     <body>
     	<script src="build/g/js/lib.js"></script>
+		<script>
+        window.__ns__('passport/js/amd.js', '/build/passport/js/amd.js');
+        window.__ns__('passport/js/amd2.js', '/build/passport/js/amd2.js');
+		//...
+		window.__ns__({
+			'passport/js/amd.js': '/build/passport/js/amd.js',
+			'passport/js/amd2.js': '/build/passport/js/amd2.js'
+		})
+		</script>
     	<script src="build/g/js/g.js"></script>
 		<script src="build/g/js/g2.js"></script>
         <script src="build/passport/js/login.js"></script>
@@ -16,5 +25,6 @@
     	<script src="build/g/js/m.js"></script>
         <script src="build/m/passport/js/login.js"></script>
 		-->
+		
     </body>
 </html>

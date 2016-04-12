@@ -17,7 +17,9 @@ exports.fileCombos = [{
 		"g/js/g.js", 
 		"g/js/g2.js", 
 		"passport/js/reg.js", 
-		"passport/js/login.js"
+		"passport/js/login.js",
+		"passport/js/amd.js",
+		"passport/js/amd2.js"
 	],
 	css: [
 		"g/css/g.less", 
@@ -26,7 +28,7 @@ exports.fileCombos = [{
 	],
 	// 直接concat复制的文件
 	concatJs: {
-		"g/js/lib.js": ["common/js/lib/jquery.js"]
+		"g/js/lib.js": ["common/js/lib/jquery.js", "common/js/lib/ns.js"]
 	},
 	// 打包时以下文件中出现的子包不被加入
 	ignoreJs: [

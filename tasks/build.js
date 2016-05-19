@@ -121,8 +121,8 @@ var Klass = Task.extend({
 					test: /\.js$/,
 					loader: require.resolve('babel-loader'),
 					query: {
-				        presets: ['es2015']
-				      }
+						presets: ['es2015']
+					}
 				}, {
 					test: /\.tpl/,
 					loader: require.resolve('html-loader')

@@ -19,7 +19,8 @@ exports.fileCombos = [{
 		"passport/js/reg.js", 
 		"passport/js/login.js",
 		"passport/js/amd.js",
-		"passport/js/amd2.js"
+		"passport/js/amd2.js",
+		"passport/js/es6-test2.js"
 	],
 	css: [
 		"g/css/g.less", 

@@ -2,11 +2,6 @@ var localRoot = __dirname;
 
 exports.serverRoot = localRoot + '';
 exports.map = [
-
-    ['http://127.0.0.1:8080/src', localRoot + '/build'],
-    ['http://127.0.0.1:8080/build', localRoot + '/build'],
-    ['http://127.0.0.1:8080/dist', localRoot + '/build'],
-
     ['http://js.tudouui.com/v3/dist', localRoot + '/build'],
     ['http://css.tudouui.com/v3/dist', localRoot + '/build'],
     ['http://ui.tudou.com/v3/dist', localRoot + '/build'],
@@ -14,7 +9,6 @@ exports.map = [
     ['http://js.tudouui.com/v3/src', localRoot + '/build'],
     ['http://css.tudouui.com/v3/src', localRoot + '/build'],
     ['http://ui.tudou.com/v3/src', localRoot + '/build']
-
 ];
 
 
@@ -30,7 +24,7 @@ exports.before = function(url) {
 };
 
 exports.merge = function(path, callback) {
-    if (/\.less$/.test(path)) {
+    if (/\.less$/.test(path) || /\.jpg/.test(path)) {
         path = path.replace(/build/, 'src');
     }
     var Mall = this.util.loadPlugin('mall');

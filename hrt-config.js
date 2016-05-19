@@ -2,13 +2,13 @@ var localRoot = __dirname;
 
 exports.serverRoot = localRoot + '';
 exports.map = [
-    ['http://js.tudouui.com/v3/dist', localRoot + '/build'],
-    ['http://css.tudouui.com/v3/dist', localRoot + '/build'],
-    ['http://ui.tudou.com/v3/dist', localRoot + '/build'],
+    ['http://js.tudouui.com/dist', localRoot + '/build'],
+    ['http://css.tudouui.com/dist', localRoot + '/build'],
+    ['http://ui.tudou.com/dist', localRoot + '/build'],
 
-    ['http://js.tudouui.com/v3/src', localRoot + '/build'],
-    ['http://css.tudouui.com/v3/src', localRoot + '/build'],
-    ['http://ui.tudou.com/v3/src', localRoot + '/build']
+    ['http://js.tudouui.com/src', localRoot + '/build'],
+    ['http://css.tudouui.com/src', localRoot + '/build'],
+    ['http://ui.tudou.com/src', localRoot + '/build']
 ];
 
 

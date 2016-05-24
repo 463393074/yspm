@@ -24,9 +24,9 @@ exports.before = function(url) {
 };
 
 exports.merge = function(path, callback) {
-    if (/\.less$/.test(path) || /\.jpg/.test(path)) {
-        path = path.replace(/build/, 'src');
-    }
+    if (!/\.js/.test(path)) {
+		path = path.replace(/build/, 'src');
+	}
     var Mall = this.util.loadPlugin('mall');
     Mall.merge.call(this, path, callback);
 };

@@ -119,6 +119,7 @@ var Klass = Task.extend({
 					loader: 'style-loader!css-loader'
 				}, {
 					test: /\.js$/,
+					exclude: /(node_modules|bower_components)/,
 					loader: require.resolve('babel-loader'),
 					query: {
 						presets: ['es2015']

@@ -118,11 +118,11 @@ var Klass = Task.extend({
 					test: /\.css$/,
 					loader: 'style-loader!css-loader'
 				}, {
-					test: /\.js$/,
+					test: /\.(js|jsx)$/,
 					exclude: /(node_modules|bower_components)/,
 					loader: require.resolve('babel-loader'),
 					query: {
-						presets: ['es2015']
+						presets: [require.resolve('babel-preset-es2015')]
 					}
 				}, {
 					test: /\.tpl/,

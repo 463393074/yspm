@@ -108,7 +108,7 @@ var Klass = Task.extend({
 				common: []
 			},
 			output: {
-				filename: filename,
+				filename: filename
 				//publicPath: Path.dirname(_path) + '/',
 				//chunkFilename: filename.split('.')[0] + ".[id].js"
 			},

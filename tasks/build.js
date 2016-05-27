@@ -252,7 +252,8 @@ var Klass = Task.extend({
 					if (Util.indir(path, self.config.root + '/' + self.config.srcPath)) {
 						return true;
 					}
-				}
+				},
+				staticPrefix: self.config.staticPrefix
 			}, function(content, data){
 				function addVersion(path, version){
 					return path.replace(/^(.+)(\.\w+[?#]?.*)$/, '$1_' + version + '$2');

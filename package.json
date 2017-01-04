@@ -1,7 +1,7 @@
 {
   "name": "yspm",
-  "version": "1.1.30",
-  "description": "土豆前端构建工具",
+  "version": "1.2.0",
+  "description": "土豆前端构建工具，支持es6,vue",
   "author": "463393074 <463393074@qq.com>",
   "bin": {
     "yspm": "./yspm"
@@ -15,8 +15,12 @@
   "dependencies": {
     "babel-core": "^6.5.2",
     "babel-loader": "^6.2.4",
+    "babel-plugin-transform-runtime": "^6.9.0",
     "babel-preset-es2015": "^6.9.0",
+    "babel-preset-stage-0": "^6.5.0",
+    "babel-runtime": "^6.9.2",
     "crypto": "0.0.3",
+    "css-loader": "^0.26.1",
     "gulp": "^3.9.1",
     "gulp-concat": "^2.6.0",
     "gulp-imagemin": "^2.4.0",
@@ -31,7 +35,13 @@
     "node.extend": "^1.1.5",
     "optimist": "^0.6.1",
     "through2": "^2.0.1",
+    "transform-runtime": "0.0.0",
     "underscore": "^1.8.3",
+    "vue": "^1.0.24",
+    "vue-html-loader": "^1.2.2",
+    "vue-loader": "^8.5.3",
+    "vue-router": "^0.7.13",
+    "vue-style-loader": "^1.0.0",
     "webpack": "^1.12.14"
   },
   "main": "main.js",

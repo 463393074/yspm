@@ -59,4 +59,19 @@ exports.fileCombos = [{
 	globalJs: [
 		"g/js/m.js"
 	]
+}, {
+	js: [
+		"es6/js/main.js"
+	],
+	css: [
+	],
+	concatJs: {
+		//"g/js/lib.js": ["common/js/lib/jquery.js"]
+	},
+	ignoreJs: [
+		"es6/js/main.js"
+	],
+	globalJs: [
+		"es6/js/main.js"
+	]
 }];

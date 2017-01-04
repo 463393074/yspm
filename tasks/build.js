@@ -120,14 +120,23 @@ var Klass = Task.extend({
 				}, {
 					test: /\.(js|jsx)$/,
 					exclude: /(node_modules|bower_components)/,
-					loader: require.resolve('babel-loader'),
-					query: {
-						presets: [require.resolve('babel-preset-es2015')]
-					}
+					loader: require.resolve('babel-loader')
 				}, {
 					test: /\.tpl/,
 					loader: require.resolve('html-loader')
+				}, {
+					test: /\.vue/,
+					loader: 'vue'
 				}]
+			},
+			vue: {
+				loaders:{
+					js:'babel'
+				}
+			},
+			babel: {
+				//plugins: ['transform-runtime'],
+				presets: ['es2015','stage-0']
 			},
 			//其它解决方案配置
 			resolve: {
@@ -139,7 +148,7 @@ var Klass = Task.extend({
 			watch: self.config.watch, //是否监听文件修改
 			devtool: 'cheap-module-inline-source-map', //sourcemap调试
 			plugins: [
-				new WebpackModuleId({ //修改moduleId为module的地址
+				new WebpackModuleId({ //修改moduleId为module的文件MD5+id, 加id是因为vue一个文件对应多个模块
 					root: root,
 					path: _path
 				})

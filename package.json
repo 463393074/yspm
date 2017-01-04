@@ -1,6 +1,6 @@
 {
   "name": "yspm",
-  "version": "1.2.0",
+  "version": "1.2.4",
   "description": "土豆前端构建工具，支持es6,vue",
   "author": "463393074 <463393074@qq.com>",
   "bin": {
@@ -34,6 +34,7 @@
     "loader-utils": "^0.2.12",
     "node.extend": "^1.1.5",
     "optimist": "^0.6.1",
+    "style-loader": "^0.13.1",
     "through2": "^2.0.1",
     "transform-runtime": "0.0.0",
     "underscore": "^1.8.3",

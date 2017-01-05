@@ -14,6 +14,7 @@ var GulpMinifyCss = require('gulp-minify-css');
 var GulpCssUrlVersion = require('../lib/gulp-css-url-version');
 var WebpackModuleId = require('../lib/webpack-module-id');
 var Util = require('../lib/util');
+var nodeRoot = Path.join(__dirname, '../node_modules');
 
 //var WebpacPlugin = require('../lib/webpack-plugin');
 
@@ -112,34 +113,40 @@ var Klass = Task.extend({
 				//publicPath: Path.dirname(_path) + '/',
 				//chunkFilename: filename.split('.')[0] + ".[id].js"
 			},
+			resolve:{
+				root: [nodeRoot]
+			},
+			resolveLoader:{
+				root: nodeRoot
+			},
 			module: {
 				//加载器配置
 				loaders: [{
 					test: /\.css$/,
-					loader: require.resolve('style-loader') + '!' + require.resolve('css-loader')
+					loader: 'style-loader!css-loader'
 				}, {
 					test: /\.(js|jsx)$/,
 					exclude: /(node_modules|bower_components)/,
-					loader: require.resolve('babel-loader')
+					loader: 'babel-loader'
 				}, {
 					test: /\.tpl/,
-					loader: require.resolve('html-loader')
+					loader: 'html-loader'
 				}, {
 					test: /\.vue/,
-					loader: require.resolve('vue-loader')
+					loader: 'vue-loader'
 				}]
 			},
 			vue: {
 				loaders: {
-					js: require.resolve('babel-loader'),
-					css: require.resolve('vue-style-loader') + '!' + require.resolve('css-loader') + '?sourceMap',
-					html: require.resolve('vue-html-loader')
+					js: 'babel-loader',
+					css: 'vue-style-loader!css-loader?sourceMap',
+					html: 'vue-html-loader'
 				}
 			},
 			babel: {
 				//plugins: ['transform-runtime'],
 				//presets: ['es2015','stage-0']
-				presets: [require.resolve('babel-preset-es2015')]
+				presets: ['babel-preset-es2015']
 			},
 			//其它解决方案配置
 			resolve: {

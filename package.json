@@ -1,6 +1,6 @@
 {
   "name": "yspm",
-  "version": "1.2.4",
+  "version": "1.2.9",
   "description": "土豆前端构建工具，支持es6,vue",
   "author": "463393074 <463393074@qq.com>",
   "bin": {
@@ -57,5 +57,8 @@
   "bugs": {
     "url": "https://github.com/463393074/yspm/issues"
   },
-  "homepage": "https://github.com/463393074/yspm#readme"
+  "homepage": "https://github.com/463393074/yspm#readme",
+  "devDependencies": {
+    "vue": "^1.0.24"
+  }
 }

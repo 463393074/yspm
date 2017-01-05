@@ -15,7 +15,7 @@ var GulpCssUrlVersion = require('../lib/gulp-css-url-version');
 var WebpackModuleId = require('../lib/webpack-module-id');
 var Util = require('../lib/util');
 var nodeRoot = Path.join(__dirname, '../node_modules');
-
+//nodeRoot="/usr/local/lib/node_modules/yspm/node_modules";
 //var WebpacPlugin = require('../lib/webpack-plugin');
 
 
@@ -114,7 +114,8 @@ var Klass = Task.extend({
 				//chunkFilename: filename.split('.')[0] + ".[id].js"
 			},
 			resolve:{
-				root: [nodeRoot]
+				root: [root],
+				extensions: ['', '.js', '.css', '.less', '.tpl', '.vue'] //后缀补全
 			},
 			resolveLoader:{
 				root: nodeRoot
@@ -127,7 +128,10 @@ var Klass = Task.extend({
 				}, {
 					test: /\.(js|jsx)$/,
 					exclude: /(node_modules|bower_components)/,
-					loader: 'babel-loader'
+					loader: 'babel-loader',
+					query: {
+						//presets: ['../../gulp/node_modules/babel-preset-es2015']
+					}
 				}, {
 					test: /\.tpl/,
 					loader: 'html-loader'
@@ -146,14 +150,7 @@ var Klass = Task.extend({
 			babel: {
 				//plugins: ['transform-runtime'],
 				//presets: ['es2015','stage-0']
-				presets: ['babel-preset-es2015']
-			},
-			//其它解决方案配置
-			resolve: {
-				//模块查找目录
-				//modulesDirectories: ['node_modules'],
-				root: [root],
-				extensions: ['', '.js', '.css', '.less', '.tpl', '.vue'] //后缀补全
+				presets: [nodeRoot + '/babel-preset-es2015']
 			},
 			watch: self.config.watch, //是否监听文件修改
 			devtool: 'cheap-module-inline-source-map', //sourcemap调试

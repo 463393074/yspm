@@ -113,12 +113,15 @@ var Klass = Task.extend({
 				//publicPath: Path.dirname(_path) + '/',
 				//chunkFilename: filename.split('.')[0] + ".[id].js"
 			},
-			resolve:{
-				root: [root],
-				extensions: ['', '.js', '.css', '.less', '.tpl', '.vue'] //后缀补全
-			},
 			resolveLoader:{
 				root: nodeRoot
+			},
+			resolve:{
+				alias: {
+					'vue$': nodeRoot + '/vue/dist/vue.js'
+				},
+				root: [root],
+				extensions: ['', '.js', '.css', '.less', '.tpl', '.vue'] //后缀补全
 			},
 			module: {
 				//加载器配置
@@ -140,15 +143,8 @@ var Klass = Task.extend({
 					loader: 'vue-loader'
 				}]
 			},
-			vue: {
-				loaders: {
-					js: 'babel-loader',
-					css: 'vue-style-loader!css-loader?sourceMap',
-					html: 'vue-html-loader'
-				}
-			},
 			babel: {
-				//plugins: ['transform-runtime'],
+				plugins: ['transform-runtime'],
 				//presets: ['es2015','stage-0']
 				presets: [nodeRoot + '/babel-preset-es2015']
 			},

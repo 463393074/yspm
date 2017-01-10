@@ -1,19 +1,24 @@
-<template>
-<div class="message">{{msg}}</div>    
+<template lang="html">
+  <div>
+    <div class="message">
+      {{ message }}
+    </div>
+  </div>
 </template>
+
 <script>
 export default {
   data () {
     return {
-      msg: 'Hello from vue-loader'
+      message: 'Helo, Vue.js 2.0'
     }
   }
 }
 </script>
-<style>
-.message{
-    color:red;
-    font-size:36px;
-    font-weight:blod;
+
+<style lang="css">
+.message {
+  color: pink;
+  font-size: 1.4em;
 }
 </style>

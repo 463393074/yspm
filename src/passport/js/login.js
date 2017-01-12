@@ -31,7 +31,6 @@ LoadJs('passport/js/amd2.js', function(amd2) {
     amd2();
 });
 
-
 /*
 __webpack_public_path__ = 'dist/passport/js/login';
 require(['./amd', './amd3'], function(amd, amd3){

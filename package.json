@@ -1,6 +1,6 @@
 {
   "name": "yspm",
-  "version": "1.2.14",
+  "version": "1.2.15",
   "description": "土豆前端构建工具，支持es6,vue",
   "author": "463393074 <463393074@qq.com>",
   "bin": {

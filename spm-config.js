@@ -51,7 +51,7 @@ exports.fileCombos = [{
 	css: [
 	],
 	concatJs: {
-		"g/js/lib.js": ["common/js/lib/jquery.js"]
+		//"g/js/lib.js": ["common/js/lib/jquery.js"]
 	},
 	ignoreJs: [
 		"g/js/m.js"

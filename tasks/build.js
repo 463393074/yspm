@@ -146,7 +146,7 @@ var Klass = Task.extend({
 			babel: {
 				//plugins: [nodeRoot + '/babel-plugin-transform-runtime'],
 				//presets: ['es2015','stage-0']
-				presets: [nodeRoot + '/babel-preset-es2015']
+				presets: [nodeRoot + '/babel-preset-es2015', nodeRoot + '/babel-preset-stage-3']
 			},
 			watch: self.config.watch, //是否监听文件修改
 			devtool: 'cheap-module-inline-source-map', //sourcemap调试

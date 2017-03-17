@@ -267,7 +267,7 @@ var Klass = Task.extend({
 					}
 				},
 				staticPrefix: self.config.staticPrefix
-			}, function (content, data) {
+			}, function(data){
 				function addVersion(path, version) {
 					return path.replace(/^(.+)(\.\w+[?#]?.*)$/, '$1_' + version + '$2');
 				}
@@ -281,7 +281,9 @@ var Klass = Task.extend({
 					}
 					if (!Fs.existsSync(buildPath) || Util.mtime(_path) >= Util.mtime(buildPath)) {
 						Util.copyFile(_path, buildPath);
-						Util.copyFile(buildPath, distPath);
+					}
+					if (!Fs.existsSync(distPath) || Util.mtime(_path) >= Util.mtime(distPath)) {
+						Util.copyFile(_path, distPath);
 					}
 				}
 			}))

@@ -15,9 +15,11 @@ var GulpCssUrlVersion = require('../lib/gulp-css-url-version');
 var WebpackModuleId = require('../lib/webpack-module-id');
 var Util = require('../lib/util');
 var nodeRoot = Path.join(__dirname, '../node_modules');
-//nodeRoot="/usr/local/lib/node_modules/yspm/node_modules";
-//var WebpacPlugin = require('../lib/webpack-plugin');
+// nodeRoot="/usr/local/lib/node_modules/yspm/node_modules";
+// var WebpacPlugin = require('../lib/webpack-plugin');
 
+// var Watch = require('gulp-watch');
+var WatchLess = require('gulp-watch-less');
 
 var Klass = Task.extend({
 	initialize: function () {
@@ -242,8 +244,17 @@ var Klass = Task.extend({
 	},
 	buildLess: function (path) {
 		var self = this;
-		Gulp.src(path)
-			.pipe(GulpLess({
+		var gulper = Gulp.src(path);
+		if(self.config.watch){
+			gulper = gulper.pipe(WatchLess(path, {
+				less:{
+					paths: [Path.resolve(self.config.root + '/')]
+				}
+			}, function(){
+				self.buildLess(path);
+			}))
+		}
+		gulper.pipe(GulpLess({
 				paths: [Path.resolve(self.config.root + '/')]
 			}))
 			.pipe(GulpCssUrlVersion({

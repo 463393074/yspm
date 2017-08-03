@@ -10,7 +10,7 @@ var A = require('./a');
 G.init()
 
 //..
-console.log('login.js');
+// console.log('login.js');
 
 // tpl
 var tpl = Art.compile(require('./login.tpl'))();

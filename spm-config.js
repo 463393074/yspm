@@ -62,6 +62,7 @@ exports.fileCombos = [{
 }, {
 	js: [
 		"es6/js/g.js",
+		"es6/js/g2.js",
 		"es6/js/main.js"
 	],
 	css: [
@@ -71,8 +72,10 @@ exports.fileCombos = [{
 	},
 	ignoreJs: [
 		"es6/js/g.js",
+		"es6/js/g2.js",
 	],
 	globalJs: [
 		"es6/js/g.js",
+		"es6/js/g2.js",
 	]
 }];

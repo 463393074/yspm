@@ -242,16 +242,19 @@ var Klass = Task.extend({
 			.pipe(GulpUglify())
 			.pipe(Gulp.dest(Path.dirname(distPath)));
 	},
-	buildLess: function (path) {
+	buildLess: function (path, watch) {
 		var self = this;
 		var gulper = Gulp.src(path);
-		if(self.config.watch){
+		if(watch === undefined){
+			watch = self.config.watch;
+		}
+		if(watch){
 			gulper = gulper.pipe(WatchLess(path, {
 				less:{
 					paths: [Path.resolve(self.config.root + '/')]
 				}
 			}, function(){
-				self.buildLess(path);
+				self.buildLess(path, false);
 			}))
 		}
 		gulper.pipe(GulpLess({

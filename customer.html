@@ -1,0 +1,16 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>测试页面</title>
+    </head>
+    <body style="height:400px; background:#fff;">
+		<p id="xxx" style="background:red;">sxxxsd</p>
+		<script>
+			var parentwin = window.parent; 
+window.addEventListener("message",function(e){
+       document.getElementById("xxx").innerHTML = "从父窗口传来的域" +e.origin + "，和内容数据：" + e.data;
+},false);
+		</script>
+    </body>
+</html>

@@ -12,6 +12,7 @@ var GulpImageMin = require('gulp-imagemin');
 var GulpUglify = require('gulp-uglify');
 var GulpMinifyCss = require('gulp-minify-css');
 var GulpCssUrlVersion = require('../lib/gulp-css-url-version');
+var GulpFixSourceMap = require('../lib/gulp-fix-source-map');
 var WebpackModuleId = require('../lib/webpack-module-id');
 var Util = require('../lib/util');
 var nodeRoot = Path.join(__dirname, '../node_modules');
@@ -238,7 +239,11 @@ var Klass = Task.extend({
 			fileStream = Gulp.src(path)
 				.pipe(GulpWebpack(self._getWebpackConfig(path)));
 		}
+		if(self.config.watch){
+			fileStream.pipe(GulpFixSourceMap());
+		}
 		fileStream.pipe(Gulp.dest(Path.dirname(buildPath)))
+			//.pipe(GulpFixSourceMap())
 			.pipe(GulpUglify())
 			.pipe(Gulp.dest(Path.dirname(distPath)));
 	},

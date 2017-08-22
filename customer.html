@@ -5,12 +5,17 @@
         <title>测试页面</title>
     </head>
     <body style="height:400px; background:#fff;">
-		<p id="xxx" style="background:red;">sxxxsd</p>
+		<p id="demo" style="background:red;">null</p>
 		<script>
-			var parentwin = window.parent; 
-window.addEventListener("message",function(e){
-       document.getElementById("xxx").innerHTML = "从父窗口传来的域" +e.origin + "，和内容数据：" + e.data;
-},false);
+//var parentwin = window.parent; 
+window.addEventListener("message", function(e){
+		console.log('start ...')
+		console.log(e);
+       document.getElementById("demo").innerText = "从父窗口传来的域" +e.origin + "，和内容数据：" + JSON.stringify(e.data);
+}, false);
+		//document.getElementById("demo").innerText = "从父窗口传来的域" +e.origin + "，和内容数据：" + e.data;
+
+	console.log('end ...')
 		</script>
     </body>
 </html>

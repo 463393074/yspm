@@ -243,7 +243,6 @@ var Klass = Task.extend({
 			fileStream.pipe(GulpFixSourceMap());
 		}
 		fileStream.pipe(Gulp.dest(Path.dirname(buildPath)))
-			//.pipe(GulpFixSourceMap())
 			.pipe(GulpUglify())
 			.pipe(Gulp.dest(Path.dirname(distPath)));
 	},

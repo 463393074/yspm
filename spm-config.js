@@ -9,7 +9,7 @@ exports.distPath = 'dist'; // 压缩文件目录
 
 exports.staticPrefix = ''; // 静态文件前缀,比如/m/dist/..
 
-exports.watching = true; // 监听修改
+exports.watching = false; // 监听修改
 
 // 文件组
 exports.fileCombos = [{

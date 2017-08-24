@@ -2,6 +2,7 @@ var Cookie = require('common/js/core/cookie');
 var Serialize = require('common/js/util/serialize');
 var LoadJs = require('common/js/core/loadJs');
 var Art = require('common/js/core/art');
+var Echarts = require('common/js/lib/echarts');
 var G = require('g/js/g');
 var A = require('./a');
 

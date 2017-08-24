@@ -239,12 +239,14 @@ var Klass = Task.extend({
 			fileStream = Gulp.src(path)
 				.pipe(GulpWebpack(self._getWebpackConfig(path)));
 		}
-		if(self.config.watch){
-			fileStream.pipe(GulpFixSourceMap());
+		if(self.config.watch) {
+			fileStream = fileStream.pipe(GulpFixSourceMap());
 		}
-		fileStream.pipe(Gulp.dest(Path.dirname(buildPath)))
-			.pipe(GulpUglify())
-			.pipe(Gulp.dest(Path.dirname(distPath)));
+		fileStream = fileStream.pipe(Gulp.dest(Path.dirname(buildPath)));
+		if(!self.config.watch) {
+			fileStream = fileStream.pipe(GulpUglify());
+			fileStream.pipe(Gulp.dest(Path.dirname(distPath)));
+		}
 	},
 	buildLess: function (path, watch) {
 		var self = this;

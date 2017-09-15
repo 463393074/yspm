@@ -147,6 +147,7 @@ var Klass = Task.extend({
 				}]
 			},
 			babel: {
+				babelrc: false,
 				//plugins: [nodeRoot + '/babel-plugin-transform-runtime'],
 				//presets: ['es2015','stage-0']
 				presets: [nodeRoot + '/babel-preset-es2015', nodeRoot + '/babel-preset-stage-3']

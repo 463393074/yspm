@@ -229,8 +229,8 @@ var Klass = Task.extend({
 							.pipe(GulpConcat(Path.basename(path)))
 							.pipe(Gulp.dest(Path.dirname(path)))
 							.pipe(Gulp.dest(Path.dirname(buildPath)))
-							.pipe(GulpUglify())
-							.pipe(Gulp.dest(Path.dirname(distPath)));
+							// .pipe(GulpUglify())
+							// .pipe(Gulp.dest(Path.dirname(distPath)));
 					}
 				});
 				return;

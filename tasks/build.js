@@ -220,7 +220,7 @@ var Klass = Task.extend({
 			});
 			fileStream = Gulp.src(concatJsList)
 				.pipe(GulpConcat(Path.basename(path)))
-				.pipe(Gulp.dest(Path.dirname(path)));
+				// .pipe(Gulp.dest(Path.dirname(path)));
 			//concat文件的监听
 			if (self.config.watch) {
 				Gulp.watch(concatJsList, function (o) {

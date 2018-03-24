@@ -10,7 +10,7 @@ var Webpack = require('webpack');
 var Extend = require('node.extend');
 var GulpImageMin = require('gulp-imagemin');
 var GulpUglify = require('gulp-uglify');
-var GulpMinifyCss = require('gulp-minify-css');
+var GulpCleanCss = require('gulp-clean-css');
 var GulpCssUrlVersion = require('../lib/gulp-css-url-version');
 var GulpFixSourceMap = require('../lib/gulp-fix-source-map');
 var WebpackModuleId = require('../lib/webpack-module-id');
@@ -150,7 +150,7 @@ var Klass = Task.extend({
 				babelrc: false,
 				//plugins: [nodeRoot + '/babel-plugin-transform-runtime'],
 				//presets: ['es2015','stage-0']
-				presets: [nodeRoot + '/babel-preset-es2015', nodeRoot + '/babel-preset-stage-3']
+				presets: [nodeRoot + '/babel-preset-env', nodeRoot + '/babel-preset-stage-3']
 			},
 			watch: self.config.watch, //是否监听文件修改
 			devtool: 'cheap-module-inline-source-map', //sourcemap调试
@@ -309,7 +309,7 @@ var Klass = Task.extend({
 				}
 			}))
 			.pipe(Gulp.dest(Path.dirname(self.getBuildPath(path))))
-			.pipe(GulpMinifyCss())
+			.pipe(GulpCleanCss())
 			.pipe(Gulp.dest(Path.dirname(self.getDistPath(path, self.config.srcPath))));
 	},
 	buildImg: function (path) {

@@ -76,6 +76,9 @@ exports.fileCombos = [
 		"es6/js/main.js"
 	],
 	css: [
+		"g/css/g.less", 
+		"passport/css/main.less",
+		"passport/css/main.css"
 	],
 	concatJs: {
 		//"g/js/lib.js": ["common/js/lib/jquery.js"]

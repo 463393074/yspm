@@ -10,6 +10,7 @@ var Webpack = require('webpack');
 var Extend = require('node.extend');
 var GulpImageMin = require('gulp-imagemin');
 var GulpUglify = require('gulp-uglify');
+var GulpBabel = require('gulp-babel');
 var GulpCleanCss = require('gulp-clean-css');
 var GulpCssUrlVersion = require('../lib/gulp-css-url-version');
 var GulpFixSourceMap = require('../lib/gulp-fix-source-map');
@@ -245,7 +246,8 @@ var Klass = Task.extend({
 		}
 		fileStream = fileStream.pipe(Gulp.dest(Path.dirname(buildPath)));
 		if(!self.config.watch) {
-			fileStream = fileStream.pipe(GulpUglify());
+			fileStream = fileStream.pipe(GulpBabel());
+			fileStream.pipe(GulpUglify());
 			fileStream.pipe(Gulp.dest(Path.dirname(distPath)));
 		}
 	},

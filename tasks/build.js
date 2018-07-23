@@ -155,7 +155,7 @@ var Klass = Task.extend({
 			},
 			babel: {
 				babelrc: false,
-				plugins: [nodeRoot + '/babel-plugin-transform-remove-strict-mode'],
+				// plugins: [nodeRoot + '/babel-plugin-transform-remove-strict-mode'],
 				//presets: ['es2015','stage-0']
 				presets: [nodeRoot + '/babel-preset-env', nodeRoot + '/babel-preset-stage-3']
 			},

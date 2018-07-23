@@ -107,15 +107,21 @@ var Klass = Task.extend({
 		var combo = self.getCombo(_path);
 		var root = Path.resolve(self.config.root + '/' + self.config.srcPath);
 		var filename = Path.basename(path);
+
+		var publicPath = self.config.distPath + '/' + self.getRelativePath(path, '/' + self.config.srcPath);
+		publicPath = '/' + Path.parse(publicPath).dir + '/';
+
 		var webpackConfig = {
 			entry: {
 				main: '',
 				common: []
 			},
 			output: {
-				filename: filename
-				//publicPath: Path.dirname(_path) + '/',
-				//chunkFilename: filename.split('.')[0] + ".[id].js"
+				filename: filename,
+				publicPath: publicPath,
+				chunkFilename: '[name].[chunkhash:8].js',
+				// filename: '[name].[chunkhash:8].js'
+				// chunkFilename: filename.split('.')[0] + ".[id].js"
 			},
 			resolveLoader:{
 				root: nodeRoot
@@ -149,7 +155,7 @@ var Klass = Task.extend({
 			},
 			babel: {
 				babelrc: false,
-				//plugins: [nodeRoot + '/babel-plugin-transform-runtime'],
+				plugins: [nodeRoot + '/babel-plugin-transform-remove-strict-mode'],
 				//presets: ['es2015','stage-0']
 				presets: [nodeRoot + '/babel-preset-env', nodeRoot + '/babel-preset-stage-3']
 			},
